@@ -24,9 +24,10 @@
         settings = angular.extend({linePoints: _linePoints()}, settings);
 
         angular.forEach(defaultBadges, function(item){
-            item.isActive = Badge.setActive(item);
-            item.position = Badge.setPosition(item, settings);
-            badgeItems.push(item);
+            var badge = new Badge(item);
+            badge.setActive();
+            badge.setPosition(settings);
+            badgeItems.push(badge);
         });
 
         this.badges = badgeItems;
@@ -60,16 +61,28 @@
      * @returns {_L1.badgeFactory.Badge}
      */
      function badgeFactory(){
-        return {        
-            setActive: function(item){
-                var itemDate = new Date(item.date);
-                return new Date() >= itemDate ? true : false;
-            },
-            setPosition: function(item, settings){
-                var startPoint = new Date(item.date).getDate();
-                return _setPosition(startPoint, settings) -23;
-            }
-        };
+        
+        var Badge = function(data){
+			this.name = data.name || '';
+			this.date = data.date || new Date();
+			this.icon = data.icon || 'circle';
+			this.isActive = data.isActive || false;
+			this.position = data.position || 0;
+		};
+		        
+		Badge.prototype.setActive = function(){
+			var itemDate = new Date(this.date);
+			this.isActive = new Date() >= itemDate ? true : false;
+			return;
+		};
+		
+		Badge.prototype.setPosition = function(settings){
+			var startPoint = new Date(this.date).getDate();
+			this.position = _setPosition(startPoint, settings) -23;
+			return;
+		};
+		
+		return Badge;
     };
     
     
