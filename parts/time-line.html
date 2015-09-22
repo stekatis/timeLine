@@ -1,0 +1,13 @@
+<div id="timeLine">
+    <span id="progression" ng-init="timeLine.setProgression()"></span>
+    <figure class="badge" 
+            ng-repeat="badge in timeLine.badges" 
+            ng-class="{'active': badge.isActive == true}" 
+            ng-style="{left: badge.position + 'px'}">
+        <i class="fa fa-{{ badge.icon }}"></i>
+        <div class="content">
+            <time class="date">{{ badge.date | date:'dd.MM.yyyy' }}</time>
+            <p>{{ badge.name | uppercase }}</p>
+        </div>
+    </figure>
+</div>
