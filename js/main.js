@@ -29,7 +29,6 @@
             let badge = new Badge(item);
             badge.setActive();
             badge.setPosition(settings);
-			console.log(badge);
             badgeItems.push(badge);
         });
 
