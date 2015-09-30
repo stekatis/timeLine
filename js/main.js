@@ -55,7 +55,7 @@
             controller: "TimeLineController",
             controllerAs: 'timeLine'
         };
-    };
+    }
     
     
     /**
@@ -86,7 +86,7 @@
         };
 
         return Badge;
-    };
+    }
     
     
     /**
@@ -100,7 +100,7 @@
         let lineLenght = $(settings.lineID).width();
         let position = (lineLenght * point)/settings.linePoints;
         return position;
-    };
+    }
     
     /**
      * Generator ID object
