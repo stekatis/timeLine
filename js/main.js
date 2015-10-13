@@ -142,5 +142,9 @@
             name: 'Fifth Item',
             icon: 'trophy'
         }
-    ];    
+    ];
+    
+    timeline.run(['$log', function($log){
+        $log.info('Initialized the timeline module.');
+    }]);
 })();
